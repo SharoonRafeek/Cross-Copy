@@ -5,6 +5,11 @@
 
 @layer base {
     html {
-        @apply bg-purple-300 w-screen h-screen font-mono;
+        @apply bg-neutral-800 w-screen h-screen font-mono;
     }
+}
+
+.header-link {
+    @apply hover:text-purple-500;
+    @apply lg:text-xl md:text-xl text-sm;
 }

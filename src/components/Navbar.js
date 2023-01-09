@@ -4,8 +4,14 @@ const Navbar = () => {
   return (
     <>
       <header>
-        <nav>
-          <span className="text-3xl font-bold text-purple-600">Cross Copy</span>
+        <nav className='p-8 flex flex-row text-purple-600 justify-between'>
+          <span className='text-3xl font-bold'>Cross Copy</span>
+          <div className='space-x-2 lg:space-x-9 md:space-x-5'>
+            <span><a className='header-link' href="/">Home</a></span>
+            <span><a className='header-link' href="/about">About</a></span>
+            <span><a className='header-link' href="/contact">Contact</a></span>
+            <span><a className='header-link' href="https://github.com/SharoonRafeek/Cross-Copy">Contribute</a></span>
+          </div>
         </nav>
       </header>
     </>
