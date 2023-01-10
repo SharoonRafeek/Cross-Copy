@@ -10,6 +10,6 @@
 }
 
 .header-link {
-    @apply hover:text-purple-500;
+    @apply hover:text-neutral-500;
     @apply lg:text-xl md:text-xl text-sm;
 }
