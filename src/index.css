@@ -11,10 +11,10 @@
 }
 
 .header-link {
-    @apply hover:text-neutral-500;
+    @apply hover:text-cyan-600;
     @apply lg:text-xl md:text-xl text-sm;
 }
 
 .home-title {
-    @apply mt-12 lg:mt-20 space-y-0 lg:space-y-9 md:space-y-9 text-6xl lg:text-8xl md:text-8xl  font-extrabold text-white
+    @apply mt-12 lg:mt-20 space-y-0 lg:space-y-9 md:space-y-9 text-6xl lg:text-8xl md:text-8xl font-extrabold text-white
 }
