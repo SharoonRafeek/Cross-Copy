@@ -13,7 +13,6 @@ import Randomstring from "randomstring";
 
 function App() {
   const route = Randomstring.generate(4);
-
   return (
     <div>
       <Navbar />
