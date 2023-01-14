@@ -8,7 +8,7 @@ const Navbar = () => {
           <span className="lg:ml-32 md:ml-16 text-xl px-3 pt-1 font-bold lg:text-3xl md:text-2xl bg-cyan-600">
             CrossCopy.
           </span>
-          <div className="lg:pr-32 md:pr-16 space-x-2 lg:space-x-9 md:space-x-5">
+          <div className="lg:mr-32 md:mr-16 space-x-2 lg:space-x-9 md:space-x-5">
             <span>
               <a className="header-link" href="/about">
                 About
