@@ -8,7 +8,7 @@ const RouteInfo = () => {
     return (
         <div className="text-xl text-center space-y-14 lg:pt-0 pt-10">
             <h3>
-                Go to <a className="bg-cyan-600">{url}</a>
+                Go to <a href={location.pathname} className="bg-cyan-600">{url}</a>
             </h3>
             <h3>
                 Or scan
