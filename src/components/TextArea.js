@@ -51,7 +51,6 @@ const TextArea = () => {
             className="bg-cyan-600 hover:bg-cyan-500"
             onClick={copyToClipboard}
           >
-            {" "}
             <h4 className="px-3 pt-1 text-white text-xl font-bold">Copy</h4>
           </button>
         </div>
