@@ -10,16 +10,20 @@ const TextArea = () => {
   const [text, setText] = useState("");
 
   useEffect(() => {
-    socket.on("receive-changes", (data) => {
+    fetch(`http://localhost:3001/${id}`)
+      .then((x) => x.json())
+      .then((content) => {
+        setText(content.data);
+      });
+
+    socket.on(`receive-changes-${id}`, (data) => {
       setText(data);
     });
 
     return () => {
       if (socket.readyState === 1) socket.disconnect();
     };
-  }, [text]);
-
-  socket.emit("join-room", id);
+  });
 
   const handleChange = (e) => {
     setText(e.target.value);
