@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import copy from "copy-to-clipboard";
 import { io } from "socket.io-client";
+import { useParams } from "react-router-dom";
 
 const socket = io("http://localhost:3001");
 
 const TextArea = () => {
+  const { route: id } = useParams();
   const [text, setText] = useState("");
 
   useEffect(() => {
@@ -17,9 +19,11 @@ const TextArea = () => {
     };
   }, [text]);
 
+  socket.emit("join-room", id);
+
   const handleChange = (e) => {
     setText(e.target.value);
-    socket.emit("send-changes", e.target.value);
+    socket.emit("send-changes", e.target.value, id);
   };
 
   const copyToClipboard = (e) => {

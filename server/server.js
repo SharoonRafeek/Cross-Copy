@@ -6,8 +6,10 @@ const io = require("socket.io")(3001, {
 });
 
 io.on("connection", (socket) => {
-  socket.on("send-changes", (text) => {
-    console.log(text);
-    socket.broadcast.emit("receive-changes", text);
+  socket.on("join-room", (id) => {
+    socket.join(id);
+  });
+  socket.on("send-changes", (text, id) => {
+    socket.to(id).emit("receive-changes", text);
   });
 });
