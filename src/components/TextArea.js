@@ -6,28 +6,29 @@ import { useParams } from "react-router-dom";
 const socket = io("http://localhost:3001");
 
 const TextArea = () => {
-  const { route: id } = useParams();
+  const { route: routeId } = useParams();
   const [text, setText] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3001/${id}`)
+    fetch(`http://localhost:3001/${routeId}`)
       .then((x) => x.json())
       .then((content) => {
         setText(content.data);
       });
 
-    socket.on(`receive-changes-${id}`, (data) => {
+    const eventName = `receive-changes-${routeId}`;
+    socket.on(eventName, (data) => {
       setText(data);
     });
 
     return () => {
-      if (socket.readyState === 1) socket.disconnect();
+      socket.off(eventName);
     };
   });
 
   const handleChange = (e) => {
     setText(e.target.value);
-    socket.emit("send-changes", e.target.value, id);
+    socket.emit("send-changes", e.target.value, routeId);
   };
 
   const copyToClipboard = (e) => {
