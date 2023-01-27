@@ -12,7 +12,7 @@ import Contact from "./pages/Contact";
 import Randomstring from "randomstring";
 
 function App() {
-  const route = Randomstring.generate(4);
+  const route = Randomstring.generate({ length: 5, charset: "alphabetic" });
   return (
     <div>
       <Navbar />

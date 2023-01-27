@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import copy from "copy-to-clipboard";
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const socket = io("http://localhost:3001");
 
@@ -25,6 +26,23 @@ const TextArea = () => {
       socket.off(eventName);
     };
   });
+
+  useEffect(() => {
+    const handleTabClose = (e) => {
+      console.log("beforeunload event triggered");
+      const data = { id: routeId };
+
+      axios
+        .post("http://localhost:3001", data)
+        .catch((err) => console.log(err));
+    };
+
+    window.addEventListener("onunload", handleTabClose);
+
+    return () => {
+      window.removeEventListener("onunload", handleTabClose);
+    };
+  }, [routeId]);
 
   const handleChange = (e) => {
     setText(e.target.value);
