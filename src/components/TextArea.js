@@ -1,52 +1,25 @@
 import React, { useEffect, useState } from "react";
 import copy from "copy-to-clipboard";
-import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
-import axios from "axios";
-
-const socket = io("http://localhost:3001");
+import { db } from "../firebaseConfig";
+import { onValue, ref, set } from "firebase/database";
 
 const TextArea = () => {
   const { route: routeId } = useParams();
   const [text, setText] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3001/${routeId}`)
-      .then((x) => x.json())
-      .then((content) => {
-        setText(content.data);
-      });
-
-    const eventName = `receive-changes-${routeId}`;
-    socket.on(eventName, (data) => {
-      setText(data);
+    const routeRef = ref(db, routeId);
+    onValue(routeRef, (snapshot) => {
+      setText(snapshot.val().text);
     });
-
-    return () => {
-      socket.off(eventName);
-    };
-  });
-
-  useEffect(() => {
-    const handleTabClose = (e) => {
-      console.log("beforeunload event triggered");
-      const data = { id: routeId };
-
-      axios
-        .post("http://localhost:3001", data)
-        .catch((err) => console.log(err));
-    };
-
-    window.addEventListener("onunload", handleTabClose);
-
-    return () => {
-      window.removeEventListener("onunload", handleTabClose);
-    };
   }, [routeId]);
 
   const handleChange = (e) => {
     setText(e.target.value);
-    socket.emit("send-changes", e.target.value, routeId);
+    set(ref(db, routeId), {
+      text: e.target.value,
+    });
   };
 
   const copyToClipboard = (e) => {
