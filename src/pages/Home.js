@@ -1,6 +1,7 @@
 import { HeadText } from "../components/HeadText";
 import RouteInfo from "../components/RouteInfo";
 import TextArea from "../components/TextArea";
+import Footer from "../components/Footer";
 
 const Home = (props) => {
   return (
@@ -10,6 +11,7 @@ const Home = (props) => {
         <TextArea />
         <RouteInfo />
       </div>
+      <Footer />
     </div>
   );
 };

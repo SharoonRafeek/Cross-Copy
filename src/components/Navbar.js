@@ -1,4 +1,5 @@
 import React from "react";
+import { AiFillGithub } from "react-icons/ai";
 
 const Navbar = () => {
   return (
@@ -10,21 +11,11 @@ const Navbar = () => {
           </span>
           <div className="lg:mr-32 md:mr-16 space-x-2 lg:space-x-9 md:space-x-5">
             <span>
-              <a className="header-link" href="/about">
-                About
-              </a>
-            </span>
-            <span>
-              <a className="header-link" href="/contact">
-                Contact
-              </a>
-            </span>
-            <span>
               <a
                 className="header-link"
                 href="https://github.com/SharoonRafeek/Cross-Copy"
               >
-                Contribute
+                <AiFillGithub size={"1em"} />
               </a>
             </span>
           </div>
