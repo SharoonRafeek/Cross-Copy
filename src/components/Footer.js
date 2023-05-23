@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="text-neutral-400 flex justify-between text-xs">
+    <footer className="pb-5">
+      <div className="text-neutral-400 flex justify-evenly text-xs">
         <div className="space-x-5">
           <a
             className="hover:text-cyan-600"
@@ -13,7 +13,7 @@ const Footer = () => {
           </a>
           <a
             className="hover:text-cyan-600"
-            href="https://in.linkedin.com/in/sharoon-rafeek-6361a6197"
+            href="https://www.linkedin.com/in/sharoonrafeek/"
           >
             LinkedIn
           </a>
