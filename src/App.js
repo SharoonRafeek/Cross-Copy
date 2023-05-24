@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Randomstring from "randomstring";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const route = Randomstring.generate({ length: 5, charset: "alphabetic" });
@@ -21,6 +22,7 @@ function App() {
           <Route path="/:route" element={<Home />} />
         </Routes>
       </Router>
+      <Analytics />
     </div>
   );
 }
