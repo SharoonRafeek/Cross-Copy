@@ -2,15 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
-    html {
-        @apply bg-neutral-800 w-screen h-screen font-mono;
-        @apply p-8 text-white
-    }
+  html {
+    @apply bg-neutral-800 w-screen h-screen font-mono;
+    @apply p-8 text-white;
+  }
 }
 
 .header-link {
-    @apply hover:text-cyan-600;
-    @apply lg:text-xl md:text-xl text-sm;
+  @apply hover:text-cyan-600;
+  @apply lg:text-xl md:text-xl text-lg;
 }

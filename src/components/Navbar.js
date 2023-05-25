@@ -15,7 +15,7 @@ const Navbar = () => {
                 className="header-link"
                 href="https://github.com/SharoonRafeek/Cross-Copy"
               >
-                <AiFillGithub size={"1em"} />
+                <AiFillGithub size={"1.5em"} />
               </a>
             </span>
           </div>
