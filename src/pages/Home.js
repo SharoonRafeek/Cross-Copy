@@ -3,7 +3,7 @@ import RouteInfo from "../components/RouteInfo";
 import TextArea from "../components/TextArea";
 import Footer from "../components/Footer";
 
-const Home = (props) => {
+const Home = () => {
   return (
     <div className="lg:ml-32 md:ml-16 lg:mr-32 md:mr-16 space-y-12">
       <HeadText />

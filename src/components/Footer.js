@@ -27,7 +27,7 @@ const Footer = () => {
             className="hover:text-cyan-600"
             href="https://github.com/Sharoonrafeek"
           >
-            GitHub{" "}
+            GitHub
           </a>
         </div>
       </div>
