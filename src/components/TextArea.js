@@ -3,10 +3,12 @@ import copy from "copy-to-clipboard";
 import { useParams } from "react-router-dom";
 import { db } from "../firebaseConfig";
 import { onValue, ref, set } from "firebase/database";
+import Alert from "./Alert";
 
 const TextArea = () => {
   const { route: routeId } = useParams();
   const [text, setText] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     const routeRef = ref(db, routeId);
@@ -25,7 +27,8 @@ const TextArea = () => {
   const copyToClipboard = (e) => {
     e.preventDefault();
     copy(text);
-    alert(`You have copied "${text}"`);
+    setShowAlert(false);
+    setTimeout(() => setShowAlert(true), 100);
   };
 
   return (
@@ -47,6 +50,7 @@ const TextArea = () => {
           </button>
         </div>
       </form>
+      {showAlert && <Alert onClose={() => setShowAlert(false)} />}
     </div>
   );
 };
