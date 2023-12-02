@@ -6,6 +6,7 @@
   html {
     @apply bg-neutral-800 w-screen h-screen font-mono;
     @apply p-8 text-white;
+    @apply overflow-x-hidden;
   }
 }
 
