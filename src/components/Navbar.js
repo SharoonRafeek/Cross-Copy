@@ -13,21 +13,11 @@ const Navbar = () => {
             <span>
               <a
                 className="header-link"
-                href="..."
+                href="https://forms.gle/1oNLNijHKj4dz6XdA"
               >
                 Feedback
               </a>
             </span>
-            <span>
-              <a
-                className="header-link"
-                href="..."
-              >
-                Patron
-              </a>
-            </span>
-
-
             <span className="lg:mr-32 md:mr-16 space-x-2 lg:space-x-9 md:space-x-5">
               <a
                 className="header-link"
