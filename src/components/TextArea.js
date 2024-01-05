@@ -31,6 +31,14 @@ const TextArea = () => {
     setTimeout(() => setShowAlert(true), 100);
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    setText("");
+    set(ref(db, routeId), {
+      text: "",
+    });
+  };
+
   return (
     <div className="w-auto lg:w-500">
       <form>
@@ -47,6 +55,12 @@ const TextArea = () => {
             onClick={copyToClipboard}
           >
             <h4 className="px-3 pt-1 text-white text-xl font-bold">Copy</h4>
+          </button>
+          <button
+            className="ml-5 bg-cyan-600 hover:bg-cyan-500"
+            onClick={handleClick}
+          >
+            <h4 className="px-3 pt-1 text-white text-xl font-bold">Clear</h4>
           </button>
         </div>
       </form>
