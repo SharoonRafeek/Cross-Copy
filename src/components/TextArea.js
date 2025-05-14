@@ -40,32 +40,40 @@ const TextArea = () => {
   };
 
   return (
-    <div className="w-auto lg:w-500">
+    <section className="w-auto lg:w-500" aria-labelledby="text-sharing-section">
+      <h2 id="text-sharing-section" className="sr-only">Text Sharing Area</h2>
       <form>
+        <label htmlFor="shared-text" className="sr-only">Shared Text</label>
         <textarea
+          id="shared-text"
           onChange={handleChange}
           value={text}
           className="w-full text-black bg-gray-100 ring-cyan-600 border-4 outline-none p-3 border-cyan-600"
           rows="12"
           placeholder="Paste your text here..."
+          aria-label="Shared text content"
         ></textarea>
-        <div>
+        <div className="mt-3">
           <button
-            className="bg-cyan-600 hover:bg-cyan-500"
+            type="button"
+            className="bg-cyan-600 hover:bg-cyan-500 transition-colors duration-200"
             onClick={copyToClipboard}
+            aria-label="Copy text to clipboard"
           >
-            <h4 className="px-3 pt-1 text-white text-xl font-bold">Copy</h4>
+            <span className="px-3 pt-1 text-white text-xl font-bold">Copy</span>
           </button>
           <button
-            className="ml-5 bg-cyan-600 hover:bg-cyan-500"
+            type="button"
+            className="ml-5 bg-cyan-600 hover:bg-cyan-500 transition-colors duration-200"
             onClick={handleClick}
+            aria-label="Clear text"
           >
-            <h4 className="px-3 pt-1 text-white text-xl font-bold">Clear</h4>
+            <span className="px-3 pt-1 text-white text-xl font-bold">Clear</span>
           </button>
         </div>
       </form>
       {showAlert && <Alert onClose={() => setShowAlert(false)} />}
-    </div>
+    </section>
   );
 };
 

@@ -2,11 +2,14 @@ import React from "react";
 
 export const HeadText = () => {
   return (
-    <div className="mt-12 w-full flex justify-center">
-      <h1 className="text-4xl leading-normal lg:w-3/4 text-center">
-        Effortlessly transfer text across all your devices with&nbsp;
-        <span className="bg-cyan-600 font-bold px-3 pt-1">CrossCopy.</span>
+    <section className="mt-12 w-full flex flex-col items-center">
+      <h1 className="text-3xl leading-normal lg:w-4/5 text-center">
+        CrossCopy - Instant Text Sharing Across Devices
       </h1>
-    </div>
+      <p className="text-center text-sm mt-4 lg:w-3/4 text-gray-400 font-medium">
+        A simple, fast, and secure clipboard sharing solution that works across all your platforms.
+        No installation required - just paste, share, and go.
+      </p>
+    </section>
   );
 };
