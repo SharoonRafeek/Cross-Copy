@@ -11,7 +11,6 @@ import Randomstring from "randomstring";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "./components/Footer";
 import { HelmetProvider } from "react-helmet-async";
-import BannerAd from "./components/BannerAd";
 
 function App() {
   const route = Randomstring.generate({ length: 5, charset: "alphabetic" });
@@ -20,7 +19,6 @@ function App() {
     <HelmetProvider>
       <div>
         <Navbar />
-        <BannerAd />
         <Router>
           <Routes>
             <Route path="/" element={<Navigate to={"/" + route} />} />
