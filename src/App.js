@@ -7,6 +7,8 @@ import {
   Navigate,
 } from "react-router-dom";
 import Home from "./pages/Home";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import Randomstring from "randomstring";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "./components/Footer";
@@ -22,6 +24,8 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Navigate to={"/" + route} />} />
+            <Route path="/info/privacy" element={<Privacy />} />
+            <Route path="/info/terms" element={<Terms />} />
             <Route path="/:route" element={<Home />} />
           </Routes>
         </Router>

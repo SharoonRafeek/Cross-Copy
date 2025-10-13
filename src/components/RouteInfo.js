@@ -29,19 +29,21 @@ const RouteInfo = () => {
           {JSON.stringify(structuredData)}
         </script>
       </Helmet>
-      <div className="text-xl text-center space-y-14 lg:pt-0 pt-10">
-        <h3>
-          Go to{" "}
-          <a href={location.pathname} className="bg-cyan-600">
-            {url}
-          </a>
-        </h3>
-        <h3>Or scan</h3>
-        <div className="flex flex-col items-center gap-5">
-          <QRCode value={url} />
-          <a href="https://www.buymeacoffee.com/SharoonRafeek" target="_blank" rel="noopener noreferrer">
-            <img className="w-[150px]" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" />
-          </a>
+      <div className="w-full flex flex-col items-center justify-center space-y-8 mt-8 lg:mt-0">
+        <div className="text-center space-y-6">
+          <h3 className="text-xl md:text-2xl">
+            Go to{" "}
+            <a
+              href={location.pathname}
+              className="bg-cyan-600 px-2 py-1 hover:bg-cyan-500 transition-colors duration-200 break-all"
+            >
+              {url}
+            </a>
+          </h3>
+          <p className="text-lg md:text-xl text-gray-300">Or scan the QR code</p>
+        </div>
+        <div className="flex flex-col items-center gap-6 bg-white p-6 rounded-lg shadow-xl">
+          <QRCode value={url} size={200} level="H" />
         </div>
       </div>
     </>

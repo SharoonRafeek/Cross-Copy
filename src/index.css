@@ -4,13 +4,26 @@
 
 @layer base {
   html {
-    @apply bg-neutral-800 w-screen h-screen font-mono;
-    @apply p-8 text-white;
+    @apply bg-neutral-800 w-screen min-h-screen font-mono;
+    @apply text-white;
     @apply overflow-x-hidden;
+  }
+
+  body {
+    @apply min-h-screen flex flex-col;
+  }
+
+  #root {
+    @apply min-h-screen flex flex-col;
   }
 }
 
 .header-link {
-  @apply hover:text-cyan-600;
-  @apply lg:text-xl md:text-xl text-lg;
+  @apply hover:text-cyan-500 transition-colors duration-200;
+  @apply lg:text-xl md:text-lg text-base;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
