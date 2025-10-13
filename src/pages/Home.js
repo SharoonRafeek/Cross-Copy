@@ -15,11 +15,13 @@ const Home = () => {
         description="Share text across your devices instantly with CrossCopy. A simple, fast, and secure way to transfer clipboard content between your computers, phones, and tablets."
         canonicalUrl={pageUrl}
       />
-      <div className="lg:ml-24 md:ml-12 lg:mr-24 md:mr-12 space-y-12">
-        <HeadText />
-        <div className="grid lg:grid-cols-2 lg:gap-x-48">
-          <TextArea />
-          <RouteInfo />
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-7xl">
+        <div className="space-y-12">
+          <HeadText />
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            <TextArea />
+            <RouteInfo />
+          </div>
         </div>
       </div>
     </>
