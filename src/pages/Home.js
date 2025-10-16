@@ -2,6 +2,9 @@ import { HeadText } from "../components/HeadText";
 import RouteInfo from "../components/RouteInfo";
 import TextArea from "../components/TextArea";
 import SEO from "../components/SEO";
+import HowItWorks from "../components/HowItWorks";
+import Features from "../components/Features";
+import FAQ from "../components/FAQ";
 import { useParams } from "react-router-dom";
 
 const Home = () => {
@@ -22,6 +25,9 @@ const Home = () => {
             <TextArea />
             <RouteInfo />
           </div>
+          <HowItWorks />
+          <Features />
+          <FAQ />
         </div>
       </div>
     </>

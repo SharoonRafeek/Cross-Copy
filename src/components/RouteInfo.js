@@ -35,11 +35,18 @@ const RouteInfo = () => {
             Go to{" "}
             <a
               href={location.pathname}
-              className="bg-cyan-600 px-2 py-1 hover:bg-cyan-500 transition-colors duration-200 break-all"
+              className="bg-cyan-600 px-2 py-1 hover:bg-cyan-500 transition-colors duration-200 break-all relative group"
+              title="Tip: You can customize this URL"
             >
               {url}
+              <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-gray-300 text-xs px-3 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                💡 You can customize this URL
+              </span>
             </a>
           </h3>
+          <p className="text-sm text-gray-500 -mt-2">
+            Try changing the URL to something memorable, like /yourname
+          </p>
           <p className="text-lg md:text-xl text-gray-300">Or scan the QR code</p>
         </div>
         <div className="flex flex-col items-center gap-6 bg-white p-6 rounded-lg shadow-xl">

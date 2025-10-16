@@ -1,7 +1,14 @@
 import React from "react";
-import { AiFillGithub } from "react-icons/ai";
 
 const Navbar = () => {
+  const scrollToSection = (e, sectionId) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <header className="mb-8">
       <nav className="flex flex-row text-white justify-between items-center px-4 md:px-8 lg:px-16 py-4" aria-label="Main Navigation">
@@ -10,12 +17,33 @@ const Navbar = () => {
             CrossCopy.
           </a>
         </div>
-        <div className="flex items-center gap-4 md:gap-6 lg:gap-8">
+        <div className="flex items-center gap-2 md:gap-4 lg:gap-6 text-xs md:text-sm">
+          <button
+            className="hover:text-cyan-500 transition-colors duration-200 hidden md:inline cursor-pointer bg-transparent border-0 text-white"
+            onClick={(e) => scrollToSection(e, 'how-it-works')}
+            aria-label="How it works"
+          >
+            How It Works
+          </button>
+          <button
+            className="hover:text-cyan-500 transition-colors duration-200 hidden md:inline cursor-pointer bg-transparent border-0 text-white"
+            onClick={(e) => scrollToSection(e, 'features')}
+            aria-label="Features"
+          >
+            Features
+          </button>
+          <button
+            className="hover:text-cyan-500 transition-colors duration-200 hidden md:inline cursor-pointer bg-transparent border-0 text-white"
+            onClick={(e) => scrollToSection(e, 'faq')}
+            aria-label="FAQ"
+          >
+            FAQ
+          </button>
           <a
-            className="header-link"
+            className="hover:text-cyan-500 transition-colors duration-200"
             href="https://forms.gle/1oNLNijHKj4dz6XdA"
             aria-label="Provide Feedback"
-            rel="noopener"
+            rel="noopener noreferrer"
             target="_blank"
           >
             Feedback
