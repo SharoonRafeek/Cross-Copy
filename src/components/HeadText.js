@@ -8,7 +8,8 @@ export const HeadText = () => {
       </h1>
       <p className="text-center text-sm md:text-base mt-4 lg:w-3/4 md:w-5/6 text-gray-300 font-medium leading-relaxed">
         A simple, fast, and secure clipboard sharing solution that works across all your platforms.
-        No installation required - just paste, share, and go.
+        No installation required - just paste, share, and go. Perfect for transferring text between
+        your phone, tablet, and computer in real-time.
       </p>
     </section>
   );

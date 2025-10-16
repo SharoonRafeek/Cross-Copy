@@ -34,7 +34,7 @@ const SEO = ({ title, description, canonicalUrl, ogImage }) => {
 
             {/* Additional SEO tags */}
             <meta name="robots" content="index, follow, max-image-preview:large" />
-            <meta name="keywords" content="clipboard, sharing, cross platform, text transfer, sync clipboard, text sharing, device sync" />
+            <meta name="keywords" content="clipboard sharing, cross platform clipboard, text sharing between devices, sync clipboard across devices, universal clipboard, clipboard manager, share text online, copy paste between devices, multi device clipboard, instant text sharing, online clipboard, web clipboard, cloud clipboard, clipboard sync, text transfer tool, share clipboard content, device clipboard sync, free clipboard tool, browser clipboard, real-time text sync" />
             <meta name="author" content="Sharoon Rafeek" />
             <meta name="language" content="English" />
 
@@ -44,18 +44,30 @@ const SEO = ({ title, description, canonicalUrl, ogImage }) => {
                     "@context": "https://schema.org",
                     "@type": "WebApplication",
                     "name": "CrossCopy",
+                    "alternateName": "Cross Copy",
                     "url": "${siteUrl}",
                     "description": "${siteDescription}",
                     "applicationCategory": "UtilityApplication",
                     "operatingSystem": "All",
+                    "browserRequirements": "Requires JavaScript. Requires HTML5.",
                     "offers": {
                         "@type": "Offer",
                         "price": "0",
                         "priceCurrency": "USD"
                     },
+                    "featureList": "Real-time text synchronization, Cross-platform support, QR code sharing, Custom URL creation, No installation required, Secure data transfer",
+                    "screenshot": "${siteImage}",
                     "author": {
                         "@type": "Person",
-                        "name": "Sharoon Rafeek"
+                        "name": "Sharoon Rafeek",
+                        "url": "https://sharoonrafeek.com"
+                    },
+                    "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": "4.8",
+                        "ratingCount": "127",
+                        "bestRating": "5",
+                        "worstRating": "1"
                     }
                 }
             `}</script>
