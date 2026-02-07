@@ -41,6 +41,13 @@ const Navbar = () => {
           </button>
           <a
             className="hover:text-cyan-500 transition-colors duration-200"
+            href="/docs"
+            aria-label="CrossCopy Documentation"
+          >
+            Docs
+          </a>
+          <a
+            className="hover:text-cyan-500 transition-colors duration-200"
             href="https://forms.gle/1oNLNijHKj4dz6XdA"
             aria-label="Provide Feedback"
             rel="noopener noreferrer"

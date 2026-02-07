@@ -1,11 +1,64 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SEO = ({ title, description, canonicalUrl, ogImage }) => {
+const DEFAULT_KEYWORDS = [
+    "clipboard sharing",
+    "cross platform clipboard",
+    "text sharing between devices",
+    "sync clipboard across devices",
+    "universal clipboard",
+    "clipboard manager",
+    "share text online",
+    "copy paste between devices",
+    "multi device clipboard",
+    "instant text sharing",
+    "online clipboard",
+    "web clipboard",
+    "cloud clipboard",
+    "clipboard sync",
+    "text transfer tool",
+    "share clipboard content",
+    "device clipboard sync",
+    "free clipboard tool",
+    "browser clipboard",
+    "real-time text sync"
+];
+
+const SEO = ({ title, description, canonicalUrl, ogImage, schema, robots, keywords }) => {
     const siteTitle = title ? `${title} | CrossCopy` : 'CrossCopy - Cross Platform Clipboard Sharing';
     const siteDescription = description || 'CrossCopy is a cross platform clipboard sharing app. Effortlessly transfer text across all your devices with CrossCopy.';
     const siteUrl = canonicalUrl || 'https://crosscopy.xyz';
     const siteImage = ogImage || 'https://i.ibb.co/nCPZDgd/c.png';
+    const robotsContent = robots || 'index, follow, max-image-preview:large';
+    const keywordContent = Array.isArray(keywords) && keywords.length > 0 ? keywords.join(', ') : DEFAULT_KEYWORDS.join(', ');
+
+    const appSchema = {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "CrossCopy",
+        "alternateName": "Cross Copy",
+        "url": siteUrl,
+        "description": siteDescription,
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": "Real-time text synchronization, Cross-platform support, QR code sharing, Custom URL creation, No installation required, Secure data transfer",
+        "screenshot": siteImage,
+        "author": {
+            "@type": "Person",
+            "name": "Sharoon Rafeek",
+            "url": "https://sharoonrafeek.com"
+        }
+    };
+
+    const schemaList = schema
+        ? (Array.isArray(schema) ? schema : [schema])
+        : [appSchema];
 
     return (
         <Helmet>
@@ -33,44 +86,16 @@ const SEO = ({ title, description, canonicalUrl, ogImage }) => {
             <meta name="twitter:creator" content="@sharoon_rafeek" />
 
             {/* Additional SEO tags */}
-            <meta name="robots" content="index, follow, max-image-preview:large" />
-            <meta name="keywords" content="clipboard sharing, cross platform clipboard, text sharing between devices, sync clipboard across devices, universal clipboard, clipboard manager, share text online, copy paste between devices, multi device clipboard, instant text sharing, online clipboard, web clipboard, cloud clipboard, clipboard sync, text transfer tool, share clipboard content, device clipboard sync, free clipboard tool, browser clipboard, real-time text sync" />
+            <meta name="robots" content={robotsContent} />
+            <meta name="keywords" content={keywordContent} />
             <meta name="author" content="Sharoon Rafeek" />
             <meta name="language" content="English" />
 
-            {/* Schema.org structured data for rich snippets */}
-            <script type="application/ld+json">{`
-                {
-                    "@context": "https://schema.org",
-                    "@type": "WebApplication",
-                    "name": "CrossCopy",
-                    "alternateName": "Cross Copy",
-                    "url": "${siteUrl}",
-                    "description": "${siteDescription}",
-                    "applicationCategory": "UtilityApplication",
-                    "operatingSystem": "All",
-                    "browserRequirements": "Requires JavaScript. Requires HTML5.",
-                    "offers": {
-                        "@type": "Offer",
-                        "price": "0",
-                        "priceCurrency": "USD"
-                    },
-                    "featureList": "Real-time text synchronization, Cross-platform support, QR code sharing, Custom URL creation, No installation required, Secure data transfer",
-                    "screenshot": "${siteImage}",
-                    "author": {
-                        "@type": "Person",
-                        "name": "Sharoon Rafeek",
-                        "url": "https://sharoonrafeek.com"
-                    },
-                    "aggregateRating": {
-                        "@type": "AggregateRating",
-                        "ratingValue": "4.8",
-                        "ratingCount": "127",
-                        "bestRating": "5",
-                        "worstRating": "1"
-                    }
-                }
-            `}</script>
+            {schemaList.map((entry, index) => (
+                <script key={index} type="application/ld+json">
+                    {JSON.stringify(entry)}
+                </script>
+            ))}
         </Helmet>
     );
 };

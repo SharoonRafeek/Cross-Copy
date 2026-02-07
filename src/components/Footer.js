@@ -25,6 +25,13 @@ const Footer = () => {
           </a>
           <a
             className="hover:text-cyan-600 transition-colors duration-200"
+            href="/docs"
+            aria-label="Documentation"
+          >
+            Docs
+          </a>
+          <a
+            className="hover:text-cyan-600 transition-colors duration-200"
             href="/info/privacy"
             aria-label="Privacy Policy"
           >
