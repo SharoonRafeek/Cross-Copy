@@ -1,6 +1,6 @@
-# Allow all web crawlers to index all content
+# Search engines and AI assistants are welcome to crawl everything.
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://crosscopy.xyz/sitemap.xml 
+# Summary for AI assistants: https://www.crosscopy.xyz/llms.txt
+Sitemap: https://www.crosscopy.xyz/sitemap.xml

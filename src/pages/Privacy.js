@@ -1,13 +1,14 @@
 import React from "react";
 import SEO from "../components/SEO";
+import site from "../content/site.json";
 
 const Privacy = () => {
     return (
         <>
             <SEO
-                title="Privacy Policy - CrossCopy"
-                description="Privacy Policy for CrossCopy - Learn how we handle your data"
-                canonicalUrl="https://crosscopy.xyz/info/privacy"
+                title="Privacy Policy"
+                description="How CrossCopy stores shared text, what analytics it uses, and how to remove your data."
+                canonicalUrl={`${site.url}/info/privacy`}
             />
             <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-4xl py-8">
                 <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">Privacy Policy</h1>

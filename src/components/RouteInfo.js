@@ -1,34 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import QRCode from "qrcode.react";
-import { Helmet } from "react-helmet-async";
 
 const RouteInfo = () => {
   const location = useLocation();
-  const url = "https://crosscopy.xyz" + location.pathname;
-
-  // Structured data for better SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "CrossCopy",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "Cross-platform",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "description": "CrossCopy is a cross platform clipboard sharing app to effortlessly transfer text across all your devices."
-  };
+  const url = window.location.origin + location.pathname;
 
   return (
     <>
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </Helmet>
       <div className="w-full flex flex-col items-center justify-center space-y-8 mt-8 lg:mt-0">
         <div className="text-center space-y-6">
           <h3 className="text-xl md:text-2xl">

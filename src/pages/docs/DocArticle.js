@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import SEO from "../../components/SEO";
+import site from "../../content/site.json";
 import { docs, docsBySlug } from "../../content/docs";
 
 const DocArticle = () => {
@@ -11,7 +12,7 @@ const DocArticle = () => {
     return <Navigate to="/docs" replace />;
   }
 
-  const baseUrl = "https://crosscopy.xyz";
+  const baseUrl = site.url;
   const canonicalUrl = `${baseUrl}/docs/${article.slug}`;
 
   const articleSchema = {
@@ -24,7 +25,8 @@ const DocArticle = () => {
     mainEntityOfPage: canonicalUrl,
     author: {
       "@type": "Person",
-      name: "Sharoon Rafeek"
+      name: site.author.name,
+      url: site.author.url
     },
     publisher: {
       "@type": "Organization",

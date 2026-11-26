@@ -1,0 +1,40 @@
+# CrossCopy
+
+> CrossCopy is a free online clipboard for sending text between your phone, tablet and computer. Open a link or scan a QR code on another device and the text syncs in real time. No app, no sign-up.
+
+- Website: https://www.crosscopy.xyz/
+- Price: free, no account or sign-up
+- Platforms: any modern web browser (Android, iOS, iPadOS, Windows, macOS, Linux, ChromeOS)
+- Source code: https://github.com/SharoonRafeek/Cross-Copy
+- Made by: Sharoon Rafeek (https://sharoonrafeek.com)
+
+## How it works
+
+1. Visit https://www.crosscopy.xyz/ and you get a new clipboard with its own short link (for example https://www.crosscopy.xyz/abcde).
+2. Paste or type text into it.
+3. Open the same link on another device, or scan the QR code shown on the page. The text syncs in real time as you type.
+4. You can also choose your own link by typing any name after the domain, such as https://www.crosscopy.xyz/yourname.
+
+## Good to know
+
+- Text only, no files or images.
+- Anyone who has a clipboard's link can read and edit it. Use the random link for anything sensitive, and press Clear when you're done.
+- Text is sent over HTTPS and stored in Firebase Realtime Database until it is cleared.
+- Works without installing an app, which makes it handy for shared or work computers.
+
+## Guides
+
+- [How to Copy Text From Phone to PC in Seconds](https://www.crosscopy.xyz/docs/copy-text-from-phone-to-pc.md): Move clipboard text from mobile to desktop in a few clicks without installing any app.
+- [Share Clipboard Between Android and Mac](https://www.crosscopy.xyz/docs/share-clipboard-between-android-and-mac.md): A practical Android-to-macOS clipboard bridge that works instantly in the browser.
+- [Cross-Device Clipboard Without Installing Apps](https://www.crosscopy.xyz/docs/cross-device-clipboard-without-installing-apps.md): Browser-first clipboard sharing for teams and personal workflows.
+- [QR Code Text Transfer Workflow](https://www.crosscopy.xyz/docs/qr-code-text-transfer-workflow.md): Fast route handoff from desktop to mobile with QR scan.
+- [Safe Clipboard Sharing Best Practices](https://www.crosscopy.xyz/docs/safe-clipboard-sharing-best-practices.md): Practical security habits for browser-based clipboard workflows.
+- [CrossCopy vs Alternatives for Text Sharing](https://www.crosscopy.xyz/docs/crosscopy-vs-alternatives.md): A realistic comparison of convenience, compatibility, and privacy tradeoffs.
+- [Clipboard Sync Troubleshooting Guide](https://www.crosscopy.xyz/docs/clipboard-sync-troubleshooting.md): A quick troubleshooting flow for slow or missing text updates.
+- [Privacy-Focused Clipboard Sharing Guide](https://www.crosscopy.xyz/docs/privacy-focused-clipboard-sharing-guide.md): Use route discipline and minimal data exposure to reduce privacy risks.
+
+## Optional
+
+- [Full text of all guides](https://www.crosscopy.xyz/llms-full.txt)
+- [Privacy policy](https://www.crosscopy.xyz/info/privacy)
+- [Terms of service](https://www.crosscopy.xyz/info/terms)

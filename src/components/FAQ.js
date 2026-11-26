@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 
-const FAQ = () => {
+const FAQ = ({ withSchema = false }) => {
     const [openIndex, setOpenIndex] = useState(null);
 
     const faqs = [
@@ -11,7 +11,7 @@ const FAQ = () => {
         },
         {
             question: "Is my data secure and private?",
-            answer: "Yes! CrossCopy uses secure Firebase Realtime Database for temporary text storage. Your data is transmitted securely, and we don't store any personal information. For sensitive data, we recommend using custom URLs and clearing your text after sharing."
+            answer: "Text is sent over an encrypted HTTPS connection and stored in Firebase Realtime Database. CrossCopy has no accounts and doesn't collect personal information. Anyone who has your clipboard link can read it, so for sensitive text use the random link (not a simple custom name) and clear the text once you're done."
         },
         {
             question: "Do I need to install anything?",
@@ -59,11 +59,13 @@ const FAQ = () => {
 
     return (
         <>
-            <Helmet>
-                <script type="application/ld+json">
-                    {JSON.stringify(faqSchema)}
-                </script>
-            </Helmet>
+            {withSchema && (
+                <Helmet>
+                    <script type="application/ld+json">
+                        {JSON.stringify(faqSchema)}
+                    </script>
+                </Helmet>
+            )}
 
             <section id="faq" className="w-full py-12 md:py-16">
                 <div className="max-w-4xl mx-auto px-4">
