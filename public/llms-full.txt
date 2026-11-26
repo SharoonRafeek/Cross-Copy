@@ -1,0 +1,286 @@
+# CrossCopy
+
+> CrossCopy is a free online clipboard for sending text between your phone, tablet and computer. Open a link or scan a QR code on another device and the text syncs in real time. No app, no sign-up.
+
+- Website: https://www.crosscopy.xyz/
+- Price: free, no account or sign-up
+- Platforms: any modern web browser (Android, iOS, iPadOS, Windows, macOS, Linux, ChromeOS)
+- Source code: https://github.com/SharoonRafeek/Cross-Copy
+- Made by: Sharoon Rafeek (https://sharoonrafeek.com)
+
+## How it works
+
+1. Visit https://www.crosscopy.xyz/ and you get a new clipboard with its own short link (for example https://www.crosscopy.xyz/abcde).
+2. Paste or type text into it.
+3. Open the same link on another device, or scan the QR code shown on the page. The text syncs in real time as you type.
+4. You can also choose your own link by typing any name after the domain, such as https://www.crosscopy.xyz/yourname.
+
+## Good to know
+
+- Text only, no files or images.
+- Anyone who has a clipboard's link can read and edit it. Use the random link for anything sensitive, and press Clear when you're done.
+- Text is sent over HTTPS and stored in Firebase Realtime Database until it is cleared.
+- Works without installing an app, which makes it handy for shared or work computers.
+
+
+---
+
+# How to Copy Text From Phone to PC in Seconds
+
+> Move clipboard text from mobile to desktop in a few clicks without installing any app.
+
+Source: https://www.crosscopy.xyz/docs/copy-text-from-phone-to-pc
+Published: 2026-02-07 · Updated: 2026-02-07
+
+## Why this workflow is useful
+
+If you regularly switch between mobile and desktop, manual retyping wastes time and creates mistakes.
+
+A shared link plus live syncing lets you move snippets, codes, and notes instantly between devices.
+
+## Step-by-step
+
+Open CrossCopy on your phone and paste the text you want to move.
+
+Open the same link on your computer by scanning the QR code or typing the short URL.
+
+Copy the synced text on desktop. Edit either side and the content stays in sync.
+
+## Security tips
+
+Treat shared links like temporary keys. Anyone with the URL can read the content.
+
+Do not share passwords, banking details, or private credentials in a public or reused link.
+
+## Frequently Asked Questions
+
+### Do I need to install an app?
+
+No. CrossCopy works directly in the browser.
+
+### Does this work between iPhone and Windows?
+
+Yes. Any device with a modern browser can join the same link.
+
+
+---
+
+# Share Clipboard Between Android and Mac
+
+> A practical Android-to-macOS clipboard bridge that works instantly in the browser.
+
+Source: https://www.crosscopy.xyz/docs/share-clipboard-between-android-and-mac
+Published: 2026-02-07 · Updated: 2026-02-07
+
+## Common Android and Mac limitation
+
+Apple Universal Clipboard does not include Android devices.
+
+A neutral browser tool fills that gap with no vendor lock-in.
+
+## Setup
+
+Create or open a CrossCopy route on Android.
+
+Open the same route on your Mac and pin it in a browser tab for repeat use.
+
+Paste text on one side and copy from the other device immediately.
+
+## Best practices
+
+Use custom route names that are memorable but not guessable.
+
+Clear old content after transfers to reduce accidental exposure.
+
+## Frequently Asked Questions
+
+### Can I share long code snippets?
+
+Yes, but keep formatting checks in mind after pasting into editors.
+
+### Is this only for Chrome?
+
+No. It works across modern mobile and desktop browsers.
+
+
+---
+
+# Cross-Device Clipboard Without Installing Apps
+
+> Browser-first clipboard sharing for teams and personal workflows.
+
+Source: https://www.crosscopy.xyz/docs/cross-device-clipboard-without-installing-apps
+Published: 2026-02-07 · Updated: 2026-02-07
+
+## Why no-install matters
+
+Install restrictions are common on work laptops and shared devices.
+
+A web route bypasses app approvals and keeps setup almost instant.
+
+## How to use
+
+Open the same CrossCopy route on both devices.
+
+Paste text into one session and copy from the other.
+
+Bookmark frequently used routes for recurring workflows.
+
+## Frequently Asked Questions
+
+### Do I need an account?
+
+No account is required.
+
+### Can I use this on corporate machines?
+
+Usually yes if browser access is allowed, but follow company policy.
+
+
+---
+
+# QR Code Text Transfer Workflow
+
+> Fast route handoff from desktop to mobile with QR scan.
+
+Source: https://www.crosscopy.xyz/docs/qr-code-text-transfer-workflow
+Published: 2026-02-07 · Updated: 2026-02-07
+
+## When QR is best
+
+QR codes are ideal when URLs are long or you want to avoid typing on mobile.
+
+They are also useful in demos or quick pair sessions.
+
+## Workflow
+
+Open a CrossCopy route on desktop.
+
+Scan the QR code with your phone camera.
+
+Start sharing text instantly in the same route.
+
+## Frequently Asked Questions
+
+### Can I use a third device too?
+
+Yes. Multiple devices can open the same route.
+
+
+---
+
+# Safe Clipboard Sharing Best Practices
+
+> Practical security habits for browser-based clipboard workflows.
+
+Source: https://www.crosscopy.xyz/docs/safe-clipboard-sharing-best-practices
+Published: 2026-02-07 · Updated: 2026-02-07
+
+## Threat model basics
+
+Anyone with route access can read shared content.
+
+Plan as if links can leak through history, screenshots, or copied messages.
+
+## Checklist
+
+Avoid passwords and API keys in shared routes.
+
+Use unique routes per session.
+
+Clear content after use and close stale tabs.
+
+## Frequently Asked Questions
+
+### Is data encrypted end-to-end?
+
+Assume route-based access control only and avoid sensitive secrets.
+
+
+---
+
+# CrossCopy vs Alternatives for Text Sharing
+
+> A realistic comparison of convenience, compatibility, and privacy tradeoffs.
+
+Source: https://www.crosscopy.xyz/docs/crosscopy-vs-alternatives
+Published: 2026-02-07 · Updated: 2026-02-07
+
+## Comparison dimensions
+
+Speed, compatibility, setup friction, and privacy controls are the most practical criteria.
+
+No single option wins for every use case, so pick based on device mix and sensitivity.
+
+## Where CrossCopy fits
+
+CrossCopy is strongest when devices are from different ecosystems and you need zero install.
+
+Native tools can be smoother inside one ecosystem but usually fail cross-platform.
+
+## Frequently Asked Questions
+
+### Is this better than sending yourself messages?
+
+For quick snippets, a live route is faster and avoids inbox clutter.
+
+
+---
+
+# Clipboard Sync Troubleshooting Guide
+
+> A quick troubleshooting flow for slow or missing text updates.
+
+Source: https://www.crosscopy.xyz/docs/clipboard-sync-troubleshooting
+Published: 2026-02-07 · Updated: 2026-02-07
+
+## Fast diagnostics
+
+Confirm all devices are on the exact same route URL.
+
+Refresh stale tabs and verify internet connectivity on each device.
+
+## Common fixes
+
+Close duplicate tabs that may show outdated content.
+
+Try a new route to rule out stale session issues.
+
+Disable aggressive privacy extensions temporarily if updates are blocked.
+
+## Frequently Asked Questions
+
+### Why do I see old text?
+
+Most often a stale tab or wrong route URL is open on one device.
+
+
+---
+
+# Privacy-Focused Clipboard Sharing Guide
+
+> Use route discipline and minimal data exposure to reduce privacy risks.
+
+Source: https://www.crosscopy.xyz/docs/privacy-focused-clipboard-sharing-guide
+Published: 2026-02-07 · Updated: 2026-02-07
+
+## Privacy principles
+
+Share the least amount of text required for the task.
+
+Prefer one-time routes for temporary operations.
+
+## Operational habits
+
+Rotate route names for different contexts.
+
+Never post active route URLs in public chats or tickets.
+
+Clear route content when the transfer is complete.
+
+## Frequently Asked Questions
+
+### Can teams use this safely?
+
+Yes, with clear internal policy on route sharing and content sensitivity.
+

@@ -25,7 +25,10 @@ function App() {
         <Navbar />
         <Router>
           <Routes>
-            <Route path="/" element={<Navigate to={"/" + route} />} />
+            <Route
+              path="/"
+              element={<Navigate to={"/" + route} replace state={{ landing: true }} />}
+            />
             <Route path="/docs" element={<DocsHome />} />
             <Route path="/docs/:slug" element={<DocArticle />} />
             <Route path="/info/privacy" element={<Privacy />} />

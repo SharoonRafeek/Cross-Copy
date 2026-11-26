@@ -1,0 +1,12 @@
+{
+  "name": "CrossCopy",
+  "url": "https://www.crosscopy.xyz",
+  "image": "https://i.ibb.co/nCPZDgd/c.png",
+  "tagline": "Free online clipboard to share text between devices",
+  "description": "CrossCopy is a free online clipboard for sending text between your phone, tablet and computer. Open a link or scan a QR code on another device and the text syncs in real time. No app, no sign-up.",
+  "author": {
+    "name": "Sharoon Rafeek",
+    "url": "https://sharoonrafeek.com"
+  },
+  "github": "https://github.com/SharoonRafeek/Cross-Copy"
+}

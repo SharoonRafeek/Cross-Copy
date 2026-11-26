@@ -1,13 +1,14 @@
 import React from "react";
 import SEO from "../components/SEO";
+import site from "../content/site.json";
 
 const Terms = () => {
     return (
         <>
             <SEO
-                title="Terms of Service - CrossCopy"
-                description="Terms of Service for CrossCopy"
-                canonicalUrl="https://crosscopy.xyz/info/terms"
+                title="Terms of Service"
+                description="Terms for using CrossCopy, the free online clipboard for sharing text between devices."
+                canonicalUrl={`${site.url}/info/terms`}
             />
             <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-4xl py-8">
                 <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">Terms of Service</h1>

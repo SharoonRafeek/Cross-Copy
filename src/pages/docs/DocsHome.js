@@ -1,9 +1,10 @@
 import React from "react";
 import SEO from "../../components/SEO";
+import site from "../../content/site.json";
 import { docs } from "../../content/docs";
 
 const DocsHome = () => {
-  const baseUrl = "https://crosscopy.xyz";
+  const baseUrl = site.url;
 
   const breadcrumbs = {
     "@context": "https://schema.org",

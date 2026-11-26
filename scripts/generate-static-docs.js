@@ -2,19 +2,22 @@ const fs = require("fs");
 const path = require("path");
 
 const projectRoot = path.resolve(__dirname, "..");
-const docsPath = path.join(projectRoot, "src", "content", "docs.json");
-const outputRoot = path.join(projectRoot, "public", "docs");
-const baseUrl = "https://crosscopy.xyz";
-
-const docs = JSON.parse(fs.readFileSync(docsPath, "utf8"));
+const publicRoot = path.join(projectRoot, "public");
+const outputRoot = path.join(publicRoot, "docs");
+const site = require(path.join(projectRoot, "src", "content", "site.json"));
+const docs = require(path.join(projectRoot, "src", "content", "docs.json"));
+const baseUrl = site.url;
 
 const escapeHtml = (value) =>
   String(value)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/\"/g, "&quot;")
+    .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+
+const jsonLd = (data) =>
+  `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
 
 const styleBlock = `
 <style>
@@ -39,32 +42,45 @@ const styleBlock = `
   .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 24px; }
   .card { border: 1px solid #374151; border-radius: 12px; padding: 14px; background: #111827; }
   .faq { border: 1px solid #374151; border-radius: 12px; background: #111827; padding: 14px; margin-bottom: 10px; }
+  .cta { display: inline-block; margin: 8px 0 4px; padding: 10px 18px; border-radius: 8px; background: #0891b2; color: #fff; font-weight: 600; }
+  .cta:hover { background: #06b6d4; color: #fff; }
 </style>
 `;
 
-const commonHead = (title, description, canonicalUrl, keywords) => `
+const commonHead = ({ title, description, canonicalUrl, keywords, type, markdownUrl }) => `
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>${escapeHtml(title)} | CrossCopy</title>
+<title>${escapeHtml(title)} | ${site.name}</title>
 <meta name="description" content="${escapeHtml(description)}" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
-<meta name="keywords" content="${escapeHtml(keywords.join(", "))}" />
+${keywords.length ? `<meta name="keywords" content="${escapeHtml(keywords.join(", "))}" />` : ""}
 <link rel="canonical" href="${canonicalUrl}" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="${escapeHtml(title)} | CrossCopy" />
+${markdownUrl ? `<link rel="alternate" type="text/markdown" href="${markdownUrl}" />` : ""}
+<link rel="icon" href="${site.image}" />
+<meta name="theme-color" content="#0891b2" />
+<meta property="og:type" content="${type}" />
+<meta property="og:title" content="${escapeHtml(title)} | ${site.name}" />
 <meta property="og:description" content="${escapeHtml(description)}" />
 <meta property="og:url" content="${canonicalUrl}" />
-<meta property="og:site_name" content="CrossCopy" />
+<meta property="og:image" content="${site.image}" />
+<meta property="og:site_name" content="${site.name}" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="${escapeHtml(title)} | CrossCopy" />
+<meta name="twitter:title" content="${escapeHtml(title)} | ${site.name}" />
 <meta name="twitter:description" content="${escapeHtml(description)}" />
+<meta name="twitter:image" content="${site.image}" />
 ${styleBlock}
 `;
+
+const ctaBlock = `<p><a class="cta" href="/">Open CrossCopy</a></p>
+<p class="muted">Free, no sign-up. Open the same link on another device to sync text instantly.</p>`;
 
 const writeFile = (filePath, content) => {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, content, "utf8");
 };
+
+const docUrl = (doc) => `${baseUrl}/docs/${doc.slug}`;
+const docMarkdownUrl = (doc) => `${baseUrl}/docs/${doc.slug}.md`;
 
 const breadcrumb = (article) => ({
   "@context": "https://schema.org",
@@ -73,7 +89,7 @@ const breadcrumb = (article) => ({
     { "@type": "ListItem", position: 1, name: "Home", item: `${baseUrl}/` },
     { "@type": "ListItem", position: 2, name: "Docs", item: `${baseUrl}/docs` },
     ...(article
-      ? [{ "@type": "ListItem", position: 3, name: article.title, item: `${baseUrl}/docs/${article.slug}` }]
+      ? [{ "@type": "ListItem", position: 3, name: article.title, item: docUrl(article) }]
       : [])
   ]
 });
@@ -81,11 +97,11 @@ const breadcrumb = (article) => ({
 const docsIndexSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "CrossCopy Documentation",
+  name: `${site.name} Documentation`,
   itemListElement: docs.map((doc, index) => ({
     "@type": "ListItem",
     position: index + 1,
-    url: `${baseUrl}/docs/${doc.slug}`,
+    url: docUrl(doc),
     name: doc.title
   }))
 };
@@ -93,20 +109,23 @@ const docsIndexSchema = {
 const docsIndexHtml = `<!doctype html>
 <html lang="en">
 <head>
-${commonHead(
-  "Documentation",
-  "CrossCopy documentation and guides for clipboard sharing, privacy, troubleshooting, and cross-platform text transfer workflows.",
-  `${baseUrl}/docs`,
-  ["crosscopy docs", "clipboard guides", "cross device text transfer"]
-)}
-<script type="application/ld+json">${JSON.stringify(breadcrumb(null))}</script>
-<script type="application/ld+json">${JSON.stringify(docsIndexSchema)}</script>
+${commonHead({
+  title: "Documentation",
+  description:
+    "CrossCopy documentation and guides for clipboard sharing, privacy, troubleshooting, and cross-platform text transfer workflows.",
+  canonicalUrl: `${baseUrl}/docs`,
+  keywords: ["crosscopy docs", "clipboard guides", "cross device text transfer"],
+  type: "website"
+})}
+${jsonLd(breadcrumb(null))}
+${jsonLd(docsIndexSchema)}
 </head>
 <body>
   <main class="container">
     <p class="breadcrumbs"><a href="/">Home</a> / Docs</p>
     <h1>CrossCopy Documentation</h1>
     <p>Practical guides for copying text across devices quickly, safely, and without app installation.</p>
+    ${ctaBlock}
     <section class="card-grid" aria-label="Documentation articles">
       ${docs
         .map(
@@ -124,18 +143,34 @@ ${commonHead(
 
 writeFile(path.join(outputRoot, "index.html"), docsIndexHtml);
 
+const docToMarkdown = (article) =>
+  [
+    `# ${article.title}`,
+    "",
+    `> ${article.summary}`,
+    "",
+    `Source: ${docUrl(article)}`,
+    `Published: ${article.publishedDate} · Updated: ${article.lastUpdated}`,
+    "",
+    ...article.sections.flatMap((section) => [`## ${section.heading}`, "", ...section.paragraphs.flatMap((p) => [p, ""])]),
+    ...(article.faqs?.length
+      ? ["## Frequently Asked Questions", "", ...article.faqs.flatMap((faq) => [`### ${faq.question}`, "", faq.answer, ""])]
+      : [])
+  ].join("\n");
+
 for (const article of docs) {
-  const canonicalUrl = `${baseUrl}/docs/${article.slug}`;
+  const canonicalUrl = docUrl(article);
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
     description: article.description,
+    image: site.image,
     datePublished: article.publishedDate,
     dateModified: article.lastUpdated,
     mainEntityOfPage: canonicalUrl,
-    author: { "@type": "Person", name: "Sharoon Rafeek" },
-    publisher: { "@type": "Organization", name: "CrossCopy", url: baseUrl }
+    author: { "@type": "Person", name: site.author.name, url: site.author.url },
+    publisher: { "@type": "Organization", name: site.name, url: `${baseUrl}/`, logo: { "@type": "ImageObject", url: site.image } }
   };
 
   const faqSchema = {
@@ -153,10 +188,19 @@ for (const article of docs) {
   const html = `<!doctype html>
 <html lang="en">
 <head>
-${commonHead(article.title, article.description, canonicalUrl, article.keywords || [])}
-<script type="application/ld+json">${JSON.stringify(articleSchema)}</script>
-<script type="application/ld+json">${JSON.stringify(breadcrumb(article))}</script>
-${article.faqs?.length ? `<script type="application/ld+json">${JSON.stringify(faqSchema)}</script>` : ""}
+${commonHead({
+  title: article.title,
+  description: article.description,
+  canonicalUrl,
+  keywords: article.keywords || [],
+  type: "article",
+  markdownUrl: docMarkdownUrl(article)
+})}
+<meta property="article:published_time" content="${escapeHtml(article.publishedDate)}" />
+<meta property="article:modified_time" content="${escapeHtml(article.lastUpdated)}" />
+${jsonLd(articleSchema)}
+${jsonLd(breadcrumb(article))}
+${article.faqs?.length ? jsonLd(faqSchema) : ""}
 </head>
 <body>
   <main class="container">
@@ -164,7 +208,7 @@ ${article.faqs?.length ? `<script type="application/ld+json">${JSON.stringify(fa
     <article>
       <h1>${escapeHtml(article.title)}</h1>
       <p>${escapeHtml(article.summary)}</p>
-      <p class="muted">${escapeHtml(article.readingTime)} read · Published ${escapeHtml(article.publishedDate)} · Updated ${escapeHtml(article.lastUpdated)}</p>
+      <p class="muted">${escapeHtml(article.readingTime)} read · Published ${escapeHtml(article.publishedDate)} · Updated ${escapeHtml(article.lastUpdated)} · By <a href="${site.author.url}">${escapeHtml(site.author.name)}</a></p>
       ${article.sections
         .map(
           (section) => `
@@ -176,6 +220,8 @@ ${article.faqs?.length ? `<script type="application/ld+json">${JSON.stringify(fa
         )
         .join("\n")}
     </article>
+
+    ${ctaBlock}
 
     ${article.faqs?.length
       ? `<section>
@@ -209,6 +255,74 @@ ${article.faqs?.length ? `<script type="application/ld+json">${JSON.stringify(fa
 </html>`;
 
   writeFile(path.join(outputRoot, article.slug, "index.html"), html);
+  writeFile(path.join(outputRoot, `${article.slug}.md`), docToMarkdown(article));
 }
 
-console.log(`Generated static docs pages: ${docs.length + 1}`);
+const latestUpdate = docs.map((doc) => doc.lastUpdated).sort().pop();
+const sitemapEntries = [
+  { loc: `${baseUrl}/`, lastmod: latestUpdate },
+  { loc: `${baseUrl}/docs`, lastmod: latestUpdate },
+  ...docs.map((doc) => ({ loc: docUrl(doc), lastmod: doc.lastUpdated })),
+  { loc: `${baseUrl}/info/privacy` },
+  { loc: `${baseUrl}/info/terms` }
+];
+
+writeFile(
+  path.join(publicRoot, "sitemap.xml"),
+  `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapEntries
+  .map(({ loc, lastmod }) => `  <url>\n    <loc>${loc}</loc>${lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : ""}\n  </url>`)
+  .join("\n")}
+</urlset>
+`
+);
+
+const llmsIntro = `# ${site.name}
+
+> ${site.description}
+
+- Website: ${baseUrl}/
+- Price: free, no account or sign-up
+- Platforms: any modern web browser (Android, iOS, iPadOS, Windows, macOS, Linux, ChromeOS)
+- Source code: ${site.github}
+- Made by: ${site.author.name} (${site.author.url})
+
+## How it works
+
+1. Visit ${baseUrl}/ and you get a new clipboard with its own short link (for example ${baseUrl}/abcde).
+2. Paste or type text into it.
+3. Open the same link on another device, or scan the QR code shown on the page. The text syncs in real time as you type.
+4. You can also choose your own link by typing any name after the domain, such as ${baseUrl}/yourname.
+
+## Good to know
+
+- Text only, no files or images.
+- Anyone who has a clipboard's link can read and edit it. Use the random link for anything sensitive, and press Clear when you're done.
+- Text is sent over HTTPS and stored in Firebase Realtime Database until it is cleared.
+- Works without installing an app, which makes it handy for shared or work computers.
+`;
+
+writeFile(
+  path.join(publicRoot, "llms.txt"),
+  `${llmsIntro}
+## Guides
+
+${docs.map((doc) => `- [${doc.title}](${docMarkdownUrl(doc)}): ${doc.summary}`).join("\n")}
+
+## Optional
+
+- [Full text of all guides](${baseUrl}/llms-full.txt)
+- [Privacy policy](${baseUrl}/info/privacy)
+- [Terms of service](${baseUrl}/info/terms)
+`
+);
+
+writeFile(
+  path.join(publicRoot, "llms-full.txt"),
+  `${llmsIntro}
+${docs.map((doc) => `\n---\n\n${docToMarkdown(doc)}`).join("\n")}
+`
+);
+
+console.log(`Generated ${docs.length + 1} docs pages, ${docs.length} markdown docs, sitemap.xml, llms.txt, llms-full.txt`);
